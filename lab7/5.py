@@ -179,11 +179,7 @@ def do_line_demo(surface, counter):
                 (3, 7)
                 ]
                 
-        t = counter * 2 * 3.14159 / 60 # this angle is 1 rotation per second
-        
-        # rotate about x axis every 2 seconds
-        # rotate about y axis every 4 seconds
-        # rotate about z axis every 6 seconds
+        t = counter * 2 * 3.14159 / 60 
         points = rotate_3d_points(cube_points, t / 2, t / 4, t / 6)
         flattened_points = []
         for point in points:
