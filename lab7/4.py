@@ -11,7 +11,7 @@ def play_a_different_song():
     pygame.mixer.music.play()
 def play_next_song():
     global _songs
-    _songs = _songs[1:] + [_songs[0]] # move current song to the back of the list
+    _songs = _songs[1:] + [_songs[0]] 
     pygame.mixer.music.load(_songs[0])
     pygame.mixer.music.play()
 _sound_library = {}

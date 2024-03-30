@@ -1,10 +1,9 @@
 import pygame
 import os
 
-# Initialize Pygame
+
 pygame.init()
 
-# Set up the screen
 screen_width = 400
 screen_height = 200
 screen = pygame.display.set_mode((screen_width, screen_height))
@@ -18,34 +17,33 @@ BLACK = (0, 0, 0)
 font = pygame.font.Font(None, 36)
 
 # Load music files
-music_files = ["music1.mp3", "music2.mp3", "music3.mp3"]  # Add your music files here
+music_files = ["music1.mp3", "music2.mp3", "music3.mp3"] 
 current_music_index = 0
 
-# Function to play music
+
 def play_music(file):
     pygame.mixer.music.load(file)
     pygame.mixer.music.play()
 
-# Function to stop music
 def stop_music():
     pygame.mixer.music.stop()
 
-# Function to play next song
+
 def next_song():
     global current_music_index
     current_music_index = (current_music_index + 1) % len(music_files)
     play_music(music_files[current_music_index])
 
-# Function to play previous song
+
 def previous_song():
     global current_music_index
     current_music_index = (current_music_index - 1) % len(music_files)
     play_music(music_files[current_music_index])
 
-# Initial song
+
 play_music(music_files[current_music_index])
 
-# Main loop
+
 running = True
 while running:
     for event in pygame.event.get():
@@ -73,5 +71,4 @@ while running:
 
     pygame.display.flip()
 
-# Quit Pygame
 pygame.quit()

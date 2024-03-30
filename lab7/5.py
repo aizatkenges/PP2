@@ -2,7 +2,7 @@ import pygame
 import math
 import time
 
-# Ignore these 3 functions. Scroll down for the relevant code.
+
 
 def create_background(width, height):
         colors = [(255, 255, 255), (212, 212, 212)]
@@ -59,7 +59,7 @@ def run_demos(width, height, fps):
                 pygame.display.flip()
                 clock.tick(fps)
 
-# Everything above this line is irrelevant to this tutorial.
+
 
 def do_rectangle_demo(surface, counter):
         left = (counter // 2) % surface.get_width()
@@ -68,7 +68,7 @@ def do_rectangle_demo(surface, counter):
         height = 30
         color = (128, 0, 128) # purple
         
-        # Draw a rectangle
+        
         pygame.draw.rect(surface, color, pygame.Rect(left, top, width, height))
 
 def do_circle_demo(surface, counter):
@@ -76,30 +76,29 @@ def do_circle_demo(surface, counter):
         y = surface.get_height() // 2
         max_radius = min(x, y) * 4 // 5
         radius = abs(int(math.sin(counter * 3.14159 * 2 / 200) * max_radius)) + 1
-        color = (0, 140, 255) # aquamarine
-        
-        # Draw a circle
+        color = (0, 140, 255) 
+       
         pygame.draw.circle(surface, color, (x, y), radius)
 
 def do_horrible_outlines(surface, counter):
-        color = (255, 0, 0) # red
+        color = (255, 0, 0) 
         
-        # draw a rectangle
+        
         pygame.draw.rect(surface, color, pygame.Rect(10, 10, 100, 100), 10)
 
-        # draw a circle
+       
         pygame.draw.circle(surface, color, (300, 60), 50, 10)
         
 def do_nice_outlines(surface, counter):
-        color = (0, 128, 0) # green
+        color = (0, 128, 0) 
         
-        # draw a rectangle
+        
         pygame.draw.rect(surface, color, pygame.Rect(10, 10, 100, 10))
         pygame.draw.rect(surface, color, pygame.Rect(10, 10, 10, 100))
         pygame.draw.rect(surface, color, pygame.Rect(100, 10, 10, 100))
         pygame.draw.rect(surface, color, pygame.Rect(10, 100, 100, 10))
         
-        # draw a circle
+        
         center_x = 300
         center_y = 60
         radius = 45
@@ -114,7 +113,7 @@ def do_nice_outlines(surface, counter):
 
 
 def do_polygon_demo(surface, counter):
-        color = (255, 255, 0) # yellow
+        color = (255, 255, 0) 
         
         num_points = 8
         point_list = []
@@ -139,7 +138,7 @@ def rotate_3d_points(points, angle_x, angle_y, angle_z):
                 new_y = y * math.cos(angle_x) - z * math.sin(angle_x)
                 new_z = y * math.sin(angle_x) + z * math.cos(angle_x)
                 y = new_y
-                # isn't math fun, kids?
+                
                 z = new_z
                 new_x = x * math.cos(angle_y) - z * math.sin(angle_y)
                 new_z = x * math.sin(angle_y) + z * math.cos(angle_y)
@@ -153,7 +152,7 @@ def rotate_3d_points(points, angle_x, angle_y, angle_z):
         return new_points
 
 def do_line_demo(surface, counter):
-        color = (0, 0, 0) # black
+        color = (0, 0, 0)
         cube_points = [
                 [-1, -1, 1],
                 [-1, 1, 1],
@@ -195,7 +194,7 @@ def do_line_demo(surface, counter):
                 x2 = p2[0] * 60 + 200
                 y2 = p2[1] * 60 + 150
                 
-                # This is the only line that really matters
+                
                 pygame.draw.line(surface, color, (x1, y1), (x2, y2), 4)
                 
         
