@@ -9,17 +9,4 @@ def play_a_different_song():
     _currently_playing_song = next_song
     pygame.mixer.music.load(next_song)
     pygame.mixer.music.play()
-def play_next_song():
-    global _songs
-    _songs = _songs[1:] + [_songs[0]] 
-    pygame.mixer.music.load(_songs[0])
-    pygame.mixer.music.play()
-_sound_library = {}
-def play_sound(path):
-  global _sound_library
-  sound = _sound_library.get(path)
-  if sound == None:
-    canonicalized_path = path.replace('/', os.sep).replace('\\', os.sep)
-    sound = pygame.mixer.Sound(canonicalized_path)
-    _sound_library[path] = sound
-  sound.play()
+
