@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Set the viewport to the width of the device and initial scale to 1.0 for better mobile responsiveness -->
+
+    <title>Dog Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #search-container {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        #search-input {
+            padding: 10px;
+            width: 200px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #search-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #dog-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .dog-item {
+            margin: 10px;
+            text-align: center;
+        }
+
+        .dog-item img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #007bff;
+        }
+
+        .dog-item h3 {
+            margin-top: 10px;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dog Catalog</h1>
+    </header>
+    <main>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search dogs...">
+            <button id="search-button">Search</button>
+        </div>
+        <div id="dog-list">
+            <div class="dog-item">
+                <img src="dog1.jpg" alt="Dog 1">
+                <h3>Dog 1</h3>
+            </div>
+            <div class="dog-item">
+                <img src="dog2.jpg" alt="Dog 2">
+                <h3>Dog 2</h3>
+            </div>
+            <div class="dog-item">
+                <img src="dog3.jpg" alt="Dog 3">
+                <h3>Dog 3</h3>
+            </div>
+          
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('search-input');
+            const searchButton = document.getElementById('search-button');
+            const dogList = document.getElementById('dog-list');
+
+            const dogs = [
+                { name: 'Labrador Retriever', breed: 'Labrador', image: 'labrador.jpg' },
+                { name: 'German Shepherd', breed: 'German Shepherd', image: 'german_shepherd.jpg' },
+                { name: 'Golden Retriever', breed: 'Golden Retriever', image: 'golden_retriever.jpg' },
+                
+            ];
+
+            function renderDogList(dogsArray) {
+                dogList.innerHTML = '';
+                dogsArray.forEach(dog => {
+                    const dogItem = document.createElement('div');
+                    dogItem.classList.add('dog-item');
+                    dogItem.innerHTML = `
+                        <img src="images/${dog.image}" alt="${dog.breed}">
+                        <h3>${dog.name}</h3>
+                        <p>Breed: ${dog.breed}</p>
+                    `;
+                    dogList.appendChild(dogItem);
+                });
+            }
+
+            renderDogList(dogs);
+
+            searchButton.addEventListener('click', function() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const filteredDogs = dogs.filter(dog => {
+                    return dog.name.toLowerCase().includes(searchTerm) || dog.breed.toLowerCase().includes(searchTerm);
+                });
+                renderDogList(filteredDogs);
+            });
+        });
+    </script>
+</body>
+</html>
